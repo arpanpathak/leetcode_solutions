@@ -24,16 +24,16 @@ class Solution {
         int index;
         public Node(TreeNode node, int index) { this.node = node; this.index = index; }
     }
-    
+
     public int widthOfBinaryTree(TreeNode root) {
-        LinkedList<Node> q = new LinkedList<>();
+        Queue<Node> q = new LinkedList<>();
         int si=Integer.MAX_VALUE, ei = Integer.MIN_VALUE, maxWidth = Integer.MIN_VALUE;
         
-        q.addLast(new Node(root, 0));
-        q.addLast(null);
+        q.add(new Node(root, 0));
+        q.add(null);
         
         while(!q.isEmpty()) {
-            Node curr = q.pollFirst();
+            Node curr = q.poll();
             
             // Reached end of the level
             if (curr == null) {
@@ -45,7 +45,7 @@ class Solution {
 
                 // If some values are there in the tree then add end label null marker to them
                 if(!q.isEmpty())
-                    q.addLast(null);
+                    q.add(null);
             } else {
                 
                 si = Math.min(si, curr.index);
@@ -53,11 +53,11 @@ class Solution {
                 
                 // Add to queue if left child exist with index 2*curr.index  + 1
                 if(curr.node.left != null) 
-                    q.addLast(new Node(curr.node.left, 2*curr.index + 1));
+                    q.add(new Node(curr.node.left, 2*curr.index + 1));
                 
                 // Add to queue if right child exist with index 2*curr.index  + 2
                 if(curr.node.right != null) 
-                    q.addLast(new Node(curr.node.right, 2*curr.index + 2));
+                    q.add(new Node(curr.node.right, 2*curr.index + 2));
                 
             }
         }
