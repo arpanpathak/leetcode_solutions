@@ -4,7 +4,7 @@
  */
 class Solution {
     public int countVowelPermutation(int n) {
-        int MOD = 1000000007;
+        int MOD = (int)10e8 + 7;
         long a = 1, e=1, i=1, o=1, u =1,a1,e1,i1,o1,u1;
         for (int ind=2; ind<=n; ind++) {
             a1 = e;
